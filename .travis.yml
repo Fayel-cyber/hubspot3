@@ -6,10 +6,13 @@ matrix:
       env: TOXENV=py36
     - python: 3.7
       env: TOXENV=py37
+    - python: 3.7
+      arch: arm64
+      env: TOXENV=py37
 install:
   - pip install -r requirements.txt
   - pip install -r requirements-dev.txt
-script: make
+script: tox
 after_script: cd ~
 after_success: coveralls --verbose
 deploy:
