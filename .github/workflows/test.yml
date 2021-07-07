@@ -6,16 +6,38 @@ on: [push, pull_request]
 jobs:
   prospector:
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-18.04
+            arch: auto
+          - os: ubuntu-18.04
+            arch: aarch64
     steps:
       - uses: actions/checkout@v1
       - uses: jpetrucciani/prospector-check@master
   mypy:
     runs-on: ubuntu-18.04
+    
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-18.04
+            arch: auto
+          - os: ubuntu-18.04
+            arch: aarch64
     steps:
       - uses: actions/checkout@v1
       - uses: jpetrucciani/mypy-check@master
   black:
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-18.04
+            arch: auto
+          - os: ubuntu-18.04
+            arch: aarch64
     steps:
       - uses: actions/checkout@v1
       - uses: jpetrucciani/black-check@master
